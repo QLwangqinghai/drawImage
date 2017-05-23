@@ -171,6 +171,12 @@ public struct UIImageOperater {
     
     
     
+    /// 生成一张纯色图
+    ///
+    /// - Parameters:
+    ///   - size: 图片size
+    ///   - color: 图片颜色
+    /// - Returns: 生成的图片
     public static func makeImage(size: CGSize, color: CGColor) -> UIImage {
         var rect = CGRect()
         rect.size = size
@@ -190,6 +196,14 @@ public struct UIImageOperater {
         return image!
     }
     
+    
+    /// 图片裁圆
+    ///
+    /// - Parameters:
+    ///   - image: 原图
+    ///   - cornerRadius: 圆的半径
+    ///   - size: 生成的图片大小，注意裁剪的圆会居中
+    /// - Returns: 生成的图片
     public static func maskCircleImage(_ image: UIImage, cornerRadius: CGFloat, to size: CGSize) -> UIImage {
         var rect = CGRect()
         rect.size = size

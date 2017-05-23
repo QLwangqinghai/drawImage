@@ -45,7 +45,7 @@ class ViewController: UIViewController {
 //                imageView1.image = image
 //            }
 //            DispatchQueue.global().async {
-//                let image = UIImageOperater.makePiercedMask(size: CGSize.init(width: 130, height: 130), cornerRadius: 50, piercedColor: UIColor.blue.cgColor, maskColor: UIColor.red.cgColor, border: (UIColor.green.cgColor, 10.0))
+                let image = UIImageOperater.makeCirclePiercedMask(size: CGSize(width: 130, height: 130), cornerRadius: 50, piercedColor: UIColor.blue.cgColor, maskColor: UIColor.red.cgColor, border: (UIColor.green.cgColor, 10.0))
 //                DispatchQueue.main.async {
 //                    imageView1.image = image
 //                }
@@ -68,6 +68,80 @@ class ViewController: UIViewController {
             imageView3.layer.borderWidth = 3
         }
         
+        let showImageView: UIImageView = UIImageView()
+        showImageView.frame = CGRect(x: 130, y: 210, width: 130, height: 130)
+        self.view.addSubview(showImageView)
+        showImageView.backgroundColor = UIColor.darkGray
+     
+        DispatchQueue.global().async {
+            let size = CGSize(width: 130, height: 130)
+            let cornerRadius: CGFloat = 50
+            let piercedColor: UIColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
+            let maskColor: UIColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            let borderColor = UIColor.green
+            let borderWidth = 10.0
+
+            let image = UIImageOperater.makeCirclePiercedMask(size: size, cornerRadius: cornerRadius, piercedColor: piercedColor.cgColor, maskColor: maskColor.cgColor, border: (borderColor.cgColor, 10.0))
+            if let data = UIImagePNGRepresentation(image) {
+                let filePath = NSHomeDirectory().appending("/Library/Caches/\(UUID().uuidString)")
+                do {
+                    try data.write(to: URL(fileURLWithPath: filePath))
+                    print("图片写入成功， 文件路径：\(filePath) size:\(size) cornerRadius:\(cornerRadius) borderWidth:\(borderWidth)")
+                } catch let error {
+                    print(error)
+                }
+            }
+            DispatchQueue.main.async {
+                showImageView.image = image
+            }
+        }
+        
+        
+        DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 2) {
+            let size = CGSize(width: 130, height: 130)
+            let cornerRadius: CGFloat = 50
+            let piercedColor: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+            let maskColor: UIColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            let borderColor = UIColor.green
+            let borderWidth = 0.0
+            
+            let image = UIImageOperater.makeCirclePiercedMask(size: size, cornerRadius: cornerRadius, piercedColor: piercedColor.cgColor, maskColor: maskColor.cgColor, border: (borderColor.cgColor, 10.0))
+            if let data = UIImagePNGRepresentation(image) {
+                let filePath = NSHomeDirectory().appending("/Library/Caches/\(UUID().uuidString)")
+                do {
+                    try data.write(to: URL(fileURLWithPath: filePath))
+                    print("图片写入成功， 文件路径：\(filePath) size:\(size) cornerRadius:\(cornerRadius) borderWidth:\(borderWidth)")
+                } catch let error {
+                    print(error)
+                }
+            }
+            DispatchQueue.main.async {
+                showImageView.image = image
+            }
+        }
+        
+        DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 4) {
+            let size = CGSize(width: 130, height: 130)
+            let cornerRadius: CGFloat = 50
+            let piercedColor: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+            let maskColor: UIColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            let borderColor = UIColor.green
+            let borderWidth = 0.0
+            
+            let image = UIImageOperater.makeCirclePiercedMask(size: size, cornerRadius: cornerRadius, piercedColor: piercedColor.cgColor, maskColor: maskColor.cgColor, border: (borderColor.cgColor, 10.0))
+            if let data = UIImagePNGRepresentation(image) {
+                let filePath = NSHomeDirectory().appending("/Library/Caches/\(UUID().uuidString)")
+                do {
+                    try data.write(to: URL(fileURLWithPath: filePath))
+                    print("图片写入成功， 文件路径：\(filePath) size:\(size) cornerRadius:\(cornerRadius) borderWidth:\(borderWidth)")
+                } catch let error {
+                    print(error)
+                }
+            }
+            DispatchQueue.main.async {
+                showImageView.image = image
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
