@@ -193,11 +193,11 @@ class ViewController: UIViewController {
         //圆角矩形楼空图
         DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 6) {
             let size = CGSize(width: 100, height: 100)
-            let cornerRadius: CGFloat = 50
+            let cornerRadius: CGFloat = 20
             let piercedColor: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
             let maskColor: UIColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
             let borderColor = UIColor.green
-            let borderWidth: CGFloat = 0.0
+            let borderWidth: CGFloat = 10.0
             
             
             guard let image = UIImageOperater.makePiercedRoundRectMask(size: size, cornerRadius: cornerRadius, piercedColor: piercedColor.cgColor, maskColor: maskColor.cgColor, border: (borderColor.cgColor, borderWidth)) else {

@@ -33,7 +33,7 @@ let image = UIImageOperater.makeCirclePiercedMask(size: CGSize(width: 130, heigh
 
 ###圆角矩形图片
 let size = CGSize(width: 100, height: 100)
-let cornerRadius: CGFloat = 50
+let cornerRadius: CGFloat = 20
 let piercedColor: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
 let maskColor: UIColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
 let borderColor = UIColor.green
