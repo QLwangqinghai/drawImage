@@ -321,9 +321,17 @@ public struct UIImageOperater {
         return image!
     }
     
+    /// 创建一个镂空的圆角矩形图片
+    ///
+    /// - Parameters:
+    ///   - size: 图片大小（scale跟随屏幕变化）
+    ///   - cornerRadius: 圆角半径
+    ///   - piercedColor: 中间镂空的圆角矩形的颜色
+    ///   - maskColor: 遮罩的颜色
+    ///   - border: 圆的边缘设置
+    /// - Returns: 图片
     public static func makePiercedRoundRectMask(size: CGSize, cornerRadius: CGFloat, piercedColor: CGColor = UIColor.clear.cgColor, maskColor: CGColor, border: (CGColor, CGFloat)? = nil) -> UIImage? {
         
-        //, border: (CGColor, CGFloat)? = nil
         func drawPiercedRoundRect(size: CGSize, cornerRadius: CGFloat, piercedColor: CGColor, borderWidth: CGFloat) -> UIImage {
             UIGraphicsBeginImageContextWithOptions(size, false, 0)
             let context: CGContext = UIGraphicsGetCurrentContext()!
@@ -333,23 +341,6 @@ public struct UIImageOperater {
             context.setLineWidth(0)
             
             let keyPoints = RoundRectKeyPathPoints(frame: rect, insets: UIEdgeInsets(top: borderWidth, left: borderWidth, bottom: -borderWidth, right: -borderWidth), cornerRadius: cornerRadius)
-            
-            
-            /*
-             context.move(to: keyPoints.leftTopPointA)
-             context.addLine(to: keyPoints.leftTopPointB)
-             
-             
-             context.addLine(to: keyPoints.rightTopPointA)
-             context.addLine(to: keyPoints.rightTopPointB)
-             
-             context.addLine(to: keyPoints.rightBottomPointA)
-             context.addLine(to: keyPoints.rightBottomPointB)
-             
-             context.addLine(to: keyPoints.leftBottomPointA)
-             context.addLine(to: keyPoints.leftBottomPointB)
-             context.addLine(to: keyPoints.leftTopPointA)
-             */
             
             context.move(to: keyPoints.leftTopPointA)
             context.addArc(center: keyPoints.leftTopCenter, start: keyPoints.leftTopPointA, end: keyPoints.leftTopPointB, radius: cornerRadius)
